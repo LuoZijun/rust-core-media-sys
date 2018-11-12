@@ -6,12 +6,11 @@ extern crate core_foundation_sys;
 
 
 use libc::{c_void, size_t, c_long};
-use core_foundation_sys::base::{Boolean, CFAllocatorRef, CFTypeID};
+use core_foundation_sys::base::{OSStatus, Boolean, CFAllocatorRef, CFTypeID, CFTypeRef};
 use core_foundation_sys::dictionary::CFDictionaryRef;
 use core_foundation_sys::string::CFStringRef;
 
 
-pub type OSStatus = i32;
 pub type OSType = u32;
 
 pub type CMItemCount = c_long;
@@ -23,21 +22,44 @@ pub type CMTimeFlags = u32;
 pub type CMTimeEpoch = i64;
 
 pub type CMVideoCodecType = u32;
-pub type CMVideoFormatDescriptionRef = CMFormatDescriptionRef;
+
+
+
+
+
+
+
 
 pub type CMBlockBufferFlags = u32;
-pub type CMBlockBufferRef = *mut OpaqueCMBlockBuffer;
-pub type CMFormatDescriptionRef = *mut OpaqueCMFormatDescription;
-pub type CMSampleBufferRef = *mut OpaqueCMSampleBuffer;
+// #[repr(C)]
+// #[derive(Debug, Copy, Clone)]
+// pub struct OpaqueCMBlockBuffer;
+// pub type CMBlockBufferRef = *mut OpaqueCMBlockBuffer;
+pub type CMBlockBufferRef = CFTypeRef;
+
+// #[repr(C)]
+// #[derive(Debug, Copy, Clone)]
+// pub struct OpaqueCMFormatDescription;
+// pub type CMFormatDescriptionRef = *mut OpaqueCMFormatDescription;
+pub type CMFormatDescriptionRef = CFTypeRef;
+pub type CMVideoFormatDescriptionRef = CMFormatDescriptionRef;
+
+// #[repr(C)]
+// #[derive(Debug, Copy, Clone)]
+// pub struct OpaqueCMSampleBuffer;
+// pub type CMSampleBufferRef = *mut OpaqueCMSampleBuffer;
+pub type CMSampleBufferRef = CFTypeRef;
 
 pub type CMSampleBufferMakeDataReadyCallback =
     extern "C" fn(sbuf: CMSampleBufferRef, makeDataReadyRefcon: *mut c_void)
                   -> OSStatus;
 
+
 pub const kCMTimeFlags_Valid: CMTimeFlags = 1 << 0;
 #[allow(non_upper_case_globals)]
 pub const kCMVideoCodecType_H264: CMVideoCodecType =
     ((b'a' as u32) << 24) | ((b'v' as u32) << 16) | ((b'c' as u32) << 8) | (b'1' as u32);
+
 
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -58,15 +80,12 @@ pub struct CMSampleTimingInfo {
 
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
-pub struct OpaqueCMBlockBuffer;
+pub struct CMTimeRange {
+    pub start: CMTime,
+    pub duration: CMTime,
+}
 
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct OpaqueCMFormatDescription;
 
-#[repr(C)]
-#[derive(Debug, Copy, Clone)]
-pub struct OpaqueCMSampleBuffer;
 
 
 #[repr(C)]
