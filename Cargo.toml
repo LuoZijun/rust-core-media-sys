@@ -1,0 +1,13 @@
+[package]
+name = "coremedia-sys"
+version = "0.1.0"
+edition = "2018"
+authors = ["luozijun <luozijun.assistant@gmail.com>"]
+description = "Bindings to Core Media for OS X"
+license = "MIT"
+homepage   = "https://github.com/luozijun/rust-coremedia-sys"
+repository = "https://github.com/luozijun/rust-coremedia-sys"
+
+[dependencies]
+libc = "0.2"
+core-foundation-sys = "0.6.2"
