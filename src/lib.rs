@@ -7,12 +7,6 @@ extern crate libc;
 extern crate core_foundation_sys;
 
 
-use libc::{c_void, size_t, c_long};
-use core_foundation_sys::base::{OSStatus, Boolean, CFAllocatorRef, CFTypeID, CFTypeRef};
-use core_foundation_sys::dictionary::CFDictionaryRef;
-use core_foundation_sys::string::CFStringRef;
-
-
 pub mod attachment;
 pub mod buffer_queue;
 pub mod memory_pool;
