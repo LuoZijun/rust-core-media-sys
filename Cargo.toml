@@ -1,6 +1,6 @@
 [package]
 name = "core-media-sys"
-version = "0.0.1"
+version = "0.1.0"
 edition = "2018"
 authors = ["luozijun <luozijun.assistant@gmail.com>"]
 description = "Bindings to CoreMedia.framework for OS X and iOS"
@@ -8,9 +8,11 @@ license = "MIT"
 homepage   = "https://github.com/luozijun/rust-core-media-sys"
 repository = "https://github.com/luozijun/rust-core-media-sys"
 documentation = "https://docs.rs/core-media-sys/*/x86_64-apple-darwin/core_media_sys"
-build = "build.rs"
 
 [dependencies]
 cfg-if = "0.1"
 libc = "0.2"
-core-foundation-sys = "0.6.2"
+core-foundation-sys = "0.7"
+
+[features]
+default = []

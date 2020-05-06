@@ -6,6 +6,10 @@ extern crate cfg_if;
 extern crate libc;
 extern crate core_foundation_sys;
 
+#[cfg(any(target_os = "macos", target_os = "ios"))]
+#[link(name = "CoreMedia", kind = "framework")]
+extern "C" { }
+
 
 pub mod attachment;
 pub mod buffer_queue;

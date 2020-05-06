@@ -1,4 +1,4 @@
-use crate::libc::{c_void, size_t, c_long, uint32_t};
+use crate::libc::{c_void, size_t, c_long};
 use crate::core_foundation_sys::base::{OSStatus, Boolean, CFAllocatorRef, CFTypeID, CFTypeRef};
 use crate::core_foundation_sys::dictionary::CFDictionaryRef;
 use crate::core_foundation_sys::string::CFStringRef;
@@ -7,7 +7,7 @@ use crate::sync::CMClockRef;
 
 
 // https://developer.apple.com/documentation/coreaudio/audioobjectid?language=objc
-pub type AudioObjectID = uint32_t;
+pub type AudioObjectID = u32;
 // https://developer.apple.com/documentation/coreaudio/audiodeviceid
 pub type AudioDeviceID = AudioObjectID;
 

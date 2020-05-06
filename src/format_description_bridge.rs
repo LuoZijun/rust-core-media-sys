@@ -1,4 +1,4 @@
-use crate::libc::{c_char, c_void, size_t, c_long, int32_t, int64_t, uint8_t, uint32_t, uint64_t};
+use crate::libc::{c_char, c_void, size_t, c_long};
 use crate::core_foundation_sys::base::{OSStatus, Boolean, CFAllocatorRef, CFTypeID, CFTypeRef};
 use crate::core_foundation_sys::dictionary::CFDictionaryRef;
 use crate::core_foundation_sys::string::{CFStringRef, CFStringEncoding};
@@ -26,7 +26,7 @@ extern "C" {
     
     pub fn CMVideoFormatDescriptionCreateFromBigEndianImageDescriptionData(
         allocator: CFAllocatorRef,
-        imageDescriptionData: *const uint8_t,
+        imageDescriptionData: *const u8,
         imageDescriptionSize: size_t,
         imageDescriptionStringEncoding: CFStringEncoding,
         imageDescriptionFlavor: CFStringRef,
@@ -39,7 +39,5 @@ extern "C" {
         imageDescriptionFlavor: CFStringRef,
         videoFormatDescriptionOut: *mut CMVideoFormatDescriptionRef
     ) -> OSStatus;
-
-
 
 }

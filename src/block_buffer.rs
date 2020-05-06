@@ -1,4 +1,4 @@
-use crate::libc::{c_char, c_void, size_t, c_long, int32_t, int64_t, uint32_t, uint64_t};
+use crate::libc::{c_char, c_void, size_t, c_long};
 use crate::core_foundation_sys::base::{OSStatus, Boolean, CFAllocatorRef, CFTypeID, CFTypeRef};
 use crate::core_foundation_sys::dictionary::CFDictionaryRef;
 use crate::core_foundation_sys::string::CFStringRef;
@@ -17,7 +17,7 @@ pub const kCMBlockBufferUnallocatedBlockErr: OSStatus           = -12707;
 pub const kCMBlockBufferInsufficientSpaceErr: OSStatus          = -12708;
 
 
-pub type CMBlockBufferFlags = uint32_t;
+pub type CMBlockBufferFlags = u32;
 
 pub const kCMBlockBufferAssureMemoryNowFlag: CMBlockBufferFlags       = 1<<0;
 pub const kCMBlockBufferAlwaysCopyDataFlag: CMBlockBufferFlags        = 1<<1;
@@ -36,12 +36,12 @@ pub struct CMBlockBufferCustomBlockSource {
     pub refCon: *mut c_void,
 }
 
-pub const kCMBlockBufferCustomBlockSourceVersion: uint32_t = 0;
+pub const kCMBlockBufferCustomBlockSourceVersion: u32 = 0;
 
 
 extern "C" {
     pub fn CMBlockBufferCreateEmpty(structureAllocator: CFAllocatorRef,
-                                    subBlockCapacity: uint32_t,
+                                    subBlockCapacity: u32,
                                     flags: CMBlockBufferFlags,
                                     newBBufOut: *mut CMBlockBufferRef) -> OSStatus;
     pub fn CMBlockBufferCreateWithMemoryBlock(structureAllocator: CFAllocatorRef,

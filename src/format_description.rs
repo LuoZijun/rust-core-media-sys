@@ -1,4 +1,4 @@
-use crate::libc::{c_char, c_void, size_t, c_long, int32_t, int64_t, uint32_t, uint64_t};
+use crate::libc::{c_char, c_void, size_t};
 use crate::core_foundation_sys::base::{OSStatus, Boolean, CFAllocatorRef, CFTypeID, CFTypeRef};
 use crate::core_foundation_sys::dictionary::CFDictionaryRef;
 use crate::core_foundation_sys::string::CFStringRef;
@@ -16,7 +16,7 @@ pub type CMVideoFormatDescriptionRef = CMFormatDescriptionRef;
 
 
 // https://developer.apple.com/documentation/kernel/fourcharcode?language=objc
-pub type FourCharCode = uint32_t;
+pub type FourCharCode = u32;
 
 pub type CMMediaType       = FourCharCode;
 pub type CMAudioCodecType  = FourCharCode;
@@ -44,11 +44,11 @@ pub const kCMMediaType_Metadata: CMMediaType           = as_u32_be(b"meta");
 pub const kCMAudioCodecType_AAC_LCProtected: CMAudioCodecType      = as_u32_be(b"paac");
 pub const kCMAudioCodecType_AAC_AudibleProtected: CMAudioCodecType = as_u32_be(b"aaac");
 
-pub type CMAudioFormatDescriptionMask = uint32_t;
-pub const kCMAudioFormatDescriptionMask_StreamBasicDescription: CMAudioFormatDescriptionMask    = (1<<0);
-pub const kCMAudioFormatDescriptionMask_MagicCookie: CMAudioFormatDescriptionMask               = (1<<1);
-pub const kCMAudioFormatDescriptionMask_ChannelLayout: CMAudioFormatDescriptionMask             = (1<<2);
-pub const kCMAudioFormatDescriptionMask_Extensions: CMAudioFormatDescriptionMask                = (1<<3);
+pub type CMAudioFormatDescriptionMask = u32;
+pub const kCMAudioFormatDescriptionMask_StreamBasicDescription: CMAudioFormatDescriptionMask    = 1<<0;
+pub const kCMAudioFormatDescriptionMask_MagicCookie: CMAudioFormatDescriptionMask               = 1<<1;
+pub const kCMAudioFormatDescriptionMask_ChannelLayout: CMAudioFormatDescriptionMask             = 1<<2;
+pub const kCMAudioFormatDescriptionMask_Extensions: CMAudioFormatDescriptionMask                = 1<<3;
 pub const kCMAudioFormatDescriptionMask_All: CMAudioFormatDescriptionMask                       = kCMAudioFormatDescriptionMask_StreamBasicDescription
                                                                                                 | kCMAudioFormatDescriptionMask_MagicCookie
                                                                                                 | kCMAudioFormatDescriptionMask_ChannelLayout
@@ -110,8 +110,8 @@ pub const kCMVideoCodecType_AppleProRes422Proxy: CMVideoCodecType = as_u32_be(b"
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct CMVideoDimensions {
-    pub width: int32_t,
-    pub height: int32_t,
+    pub width: i32,
+    pub height: i32,
 }
 
 
@@ -170,8 +170,8 @@ extern "C" {
 
     pub fn CMVideoFormatDescriptionCreate(allocator: CFAllocatorRef,
                                           codecType: CMVideoCodecType,
-                                          width: int32_t,
-                                          height: int32_t,
+                                          width: i32,
+                                          height: i32,
                                           extensions: CFDictionaryRef,
                                           outDesc: *mut CMVideoFormatDescriptionRef) -> OSStatus;
 }

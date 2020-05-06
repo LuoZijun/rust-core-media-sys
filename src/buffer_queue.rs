@@ -1,4 +1,4 @@
-use crate::libc::{c_char, c_void, size_t, c_long, int32_t, int64_t, uint32_t, uint64_t};
+use crate::libc::{c_void, size_t};
 use crate::core_foundation_sys::base::{OSStatus, Boolean, CFAllocatorRef, CFTypeID, CFTypeRef, CFComparisonResult};
 use crate::core_foundation_sys::dictionary::CFDictionaryRef;
 use crate::core_foundation_sys::string::CFStringRef;
@@ -34,7 +34,7 @@ pub type CMBufferGetSizeCallback = extern "C" fn (buf: CMBufferRef, refcon: *mut
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct CMBufferCallbacks {
-    pub version: uint32_t,
+    pub version: u32,
     pub refcon: *mut c_void,
     pub getDecodeTimeStamp: CMBufferGetTimeCallback,
     pub getPresentationTimeStamp: CMBufferGetTimeCallback,
@@ -49,7 +49,7 @@ pub struct CMBufferCallbacks {
 pub type CMBufferQueueTriggerToken = *mut c_void;
 pub type CMBufferQueueTriggerCallback = extern "C" fn (triggerRefcon: *mut c_void,
                                                        triggerToken: CMBufferQueueTriggerToken);
-pub type CMBufferQueueTriggerCondition = int32_t;
+pub type CMBufferQueueTriggerCondition = i32;
 pub const kCMBufferQueueTrigger_WhenDurationBecomesLessThan: CMBufferQueueTriggerCondition = 1;
 pub const kCMBufferQueueTrigger_WhenDurationBecomesLessThanOrEqualTo: CMBufferQueueTriggerCondition = 2;
 pub const kCMBufferQueueTrigger_WhenDurationBecomesGreaterThan: CMBufferQueueTriggerCondition = 3;
