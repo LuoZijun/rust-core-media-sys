@@ -1,4 +1,4 @@
-use crate::libc::{c_char, c_void, size_t, c_long};
+use crate::libc::size_t;
 use crate::core_foundation_sys::base::{OSStatus, Boolean, CFAllocatorRef, CFTypeID, CFTypeRef};
 use crate::core_foundation_sys::dictionary::CFDictionaryRef;
 use crate::core_foundation_sys::string::{CFStringRef, CFStringEncoding};
