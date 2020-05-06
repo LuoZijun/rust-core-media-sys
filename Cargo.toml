@@ -1,6 +1,6 @@
 [package]
 name = "core-media-sys"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2018"
 authors = ["luozijun <luozijun.assistant@gmail.com>"]
 description = "Bindings to CoreMedia.framework for OS X and iOS"
